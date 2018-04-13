@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/db_test?characterEncoding=utf8&useSSL=true
+    driver-class-name: com.mysql.jdbc.Driver
+    username: Black
+    password: 123456
+    druid:
+      filters: stat,wall
+      max-active: 20
+      initial-size: 1
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filter:
+        stat:
+          merge-sql: true
+          slow-sql-millis: 5000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 1 from dual
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+  jpa:
+    show-sql: true
+    open-in-view: true
